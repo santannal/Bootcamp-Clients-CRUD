@@ -9,6 +9,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "TBL_CLIENT")
@@ -17,15 +23,27 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String gender;
+
+    @NotNull
+    private Integer gender;
+
+    @NotBlank(message = "Name can not be blank")
+    @Size(min = 5, max = 255, message = "Name length min=5 and max=255")
     private String name;
-    private Double salary;
+
+    @NotNull(message = "Bonus can not be null")
+    @Min(value = 0, message = "Bonus Min value = 0")
+    @Max(value = 100, message = "Bonus Max value = 100")
     private Double bonus;
+
+    @NotNull(message = "Salary can not be null")
+    @Positive(message = "Salary can not be <= 0")
+    private Double salary;
 
     public Client() {
     }
 
-    public Client(Long id, String gender, String name, Double salary, Double bonus) {
+    public Client(Long id, Integer gender, String name, Double salary, Double bonus) {
         this.id = id;
         this.gender = gender;
         this.name = name;
@@ -41,11 +59,11 @@ public class Client implements Serializable {
         this.id = id;
     }
 
-    public String getGender() {
+    public Integer getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Integer gender) {
         this.gender = gender;
     }
 
@@ -124,17 +142,17 @@ public class Client implements Serializable {
                 + "]";
     }
 
-    // public ClientResponse toDTO(){
-    //     ClientResponse clientResponse = new ClientResponse();
+    public ClientResponse toDTO() {
+        ClientResponse clientResponse = new ClientResponse();
 
-    //     clientResponse.setId(id);
-    //     //gender, name, salary, bonus
-    //     clientResponse.setGender(gender);
-    //     clientResponse.setName(name);
-    //     clientResponse.setSalary(salary);
-    //     clientResponse.setBonus(bonus);
+        clientResponse.setId(id);
+        // gender, name, salary, bonus
+        clientResponse.setGender(gender);
+        clientResponse.setName(name);
+        clientResponse.setSalary(salary);
+        clientResponse.setBonus(bonus);
 
-    //     return clientResponse;
-    // }
+        return clientResponse;
+    }
 
 }

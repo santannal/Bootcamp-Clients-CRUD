@@ -29,13 +29,15 @@ public class ClientService {
     }
 
     public List<ClientResponse> getAll() {
-        return clientRepository.findAll().stream.map(c -> c.toDTO())
+        return clientRepository.findAll()
+                .stream()
+                .map(c -> c.toDTO())
                 .collect(Collectors.toList());
     }
 
     public ClientResponse save(ClientRequest clientRequest) {
         try {
-            Client client = ClientRepository.save(clientRequest.toEntity());
+            Client client = clientRepository.save(clientRequest.toEntity());
             return client.toDTO();
         } catch (DataIntegrityViolationException e) {
             throw new DataIntegrityViolationException("Client Save Exception!");
