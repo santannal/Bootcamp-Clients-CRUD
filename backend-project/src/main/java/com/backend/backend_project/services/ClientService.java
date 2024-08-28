@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.backend.backend_project.dto.ClientRequest;
 import com.backend.backend_project.dto.ClientResponse;
 import com.backend.backend_project.models.Client;
-import com.repositories.ClientRepository;
+import com.backend.backend_project.repositories.ClientRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
