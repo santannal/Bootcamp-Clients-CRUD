@@ -45,14 +45,12 @@ public class ClientService {
     }
 
     public void deleteById(long id) {
+        // Solução encontrada para lançar erro 404 ao tentar excluir um cliente nao
+        // existente
         if (!clientRepository.existsById(id)) {
             throw new EntityNotFoundException("Client Not Found!");
         } else {
-            try {
-                clientRepository.deleteById(id);
-            } catch (EmptyResultDataAccessException e) {
-                throw new EntityNotFoundException("Client Not Found!");
-            }
+            clientRepository.deleteById(id);
         }
     }
 
@@ -73,5 +71,4 @@ public class ClientService {
         }
 
     }
-    // TODO demais serviços !!!
 }
