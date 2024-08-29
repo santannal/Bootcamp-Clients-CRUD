@@ -20,6 +20,8 @@ import com.backend.backend_project.dto.ClientRequest;
 import com.backend.backend_project.dto.ClientResponse;
 import com.backend.backend_project.services.ClientService;
 
+import jakarta.validation.Valid;
+
 // import io.micrometer.core.ipc.http.HttpSender.Response;
 // import jakarta.validation.Valid;
 
@@ -62,7 +64,7 @@ public class ClientController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Void> updateClient(@PathVariable long id, @RequestBody ClientRequest clientUpdate) {
+    public ResponseEntity<Void> updateClient(@PathVariable long id, @Valid @RequestBody ClientRequest clientUpdate) {
         clientService.update(id, clientUpdate);
         return ResponseEntity.ok().build();
     }

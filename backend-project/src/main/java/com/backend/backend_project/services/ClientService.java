@@ -45,10 +45,14 @@ public class ClientService {
     }
 
     public void deleteById(long id) {
-        try {
-            clientRepository.deleteById(id);
-        } catch (EmptyResultDataAccessException e) {
+        if (!clientRepository.existsById(id)) {
             throw new EntityNotFoundException("Client Not Found!");
+        } else {
+            try {
+                clientRepository.deleteById(id);
+            } catch (EmptyResultDataAccessException e) {
+                throw new EntityNotFoundException("Client Not Found!");
+            }
         }
     }
 
