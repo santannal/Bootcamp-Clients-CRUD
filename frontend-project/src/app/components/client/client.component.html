@@ -1,0 +1,58 @@
+<div class="display-6">
+    Formulário de Cadastro:
+</div>
+<div class="row mt-4">
+    <div class="col-md-10 offset-md-1">
+
+        <form>
+
+            <div class="row mb-3 mt-3">
+                <label for="inputName" class="col-sm-2 col-form-label">Nome:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="name" id="inputName" formControlName="name">
+                </div>
+
+            </div>
+
+            <div class="row mb-3 mt-3">
+                <label for="inputSalary" class="col-sm-2 col-form-label">Salário:</label>
+                <div class="col-sm-5">
+                    <input type="number" class="form-control" name="salary" id="inputSalary" formControlName="salary">
+                </div>
+                <label for="inputBonus" class="col-sm-2 col-form-label">Bônus:</label>
+                <div class="col-sm-3">
+                    <input type="number" class="form-control" name="bonus" id="inputBonus" formControlName="bonus">
+                </div>
+
+            </div>
+
+            <div class="row mb-3 mt-3">
+                <div class="d-flex">
+                    <label class="col-sm-2 col-form-label">Gênero:</label>
+                    <div class="container">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="1" name="flexRadioDefault"
+                                id="flexRadio2">
+                            <label class="form-check-label" for="flexRadio2">
+                                Masculino
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="2" name="flexRadioDefault"
+                                id="flexRadio2">
+                            <label class="form-check-label" for="flexRadio2">
+                                Feminino
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3 mt-3">
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-outline-success me-1">Salvar</button>
+                    <button type="button" class="btn btn-danger">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
