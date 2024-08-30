@@ -9,7 +9,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ClientComponent } from './components/client/client.component';
 import { ClientsComponent } from './components/clients/clients.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -19,13 +21,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     HeaderComponent,
     NavbarComponent,
     ClientComponent,
-    ClientsComponent
+    ClientsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, HttpClientModule, FormsModule
   ],
   providers: [
     provideClientHydration()

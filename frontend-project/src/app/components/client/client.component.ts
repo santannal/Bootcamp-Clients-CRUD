@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Client } from '../../interfaces/client';
-import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-client',
@@ -17,9 +17,13 @@ export class ClientComponent {
 
   formGroupClient: FormGroup;
 
-  constructor(private formBuider: FormBuilder) {
-    this.formGroupClient = this.formBuider.group({
-      //TODO IMPLEMENTAR OS ATRIBUTOS E SUAS RESPECTIVAS MODELAGENS
+  constructor(private formBuilder: FormBuilder) {
+    this.formGroupClient = this.formBuilder.group({
+      id: { value: null, disabled: true },
+      name: ['', [Validators.required, Validators.minLength(5)]],
+      salary: ['', [Validators.required, Validators.min(1)]],
+      bonus: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
+      gender: ['1', Validators.required]
     });
   }
 
