@@ -19,6 +19,12 @@
                     <label for="inputName" class="col-sm-2 col-form-label">Nome:</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="name" id="inputName" formControlName="name">
+                        <div *ngIf="ngFormClient.submitted">
+                            <small *ngIf="pfgName?.errors?.['required']" class="form-text text-danger">*Nome é
+                                requirido!</small>
+                            <small *ngIf="pfgName?.errors?.['minlength']" class="form-text text-danger">*Tamanho mínimo
+                                de 5 caracteres!</small>
+                        </div>
                     </div>
 
                 </div>
@@ -28,10 +34,22 @@
                     <div class="col-sm-5">
                         <input type="number" class="form-control" name="salary" id="inputSalary"
                             formControlName="salary">
+                        <div *ngIf="ngFormClient.submitted">
+                            <small *ngIf="pfgSalary?.errors?.['min']" class="text-danger">*Salário é maior que
+                                zero</small>
+                            <small *ngIf="pfgSalary?.errors?.['required']" class="text-danger">*Salário é
+                                requerido</small>
+                        </div>
                     </div>
                     <label for="inputBonus" class="col-sm-2 col-form-label">Bônus:</label>
                     <div class="col-sm-3">
                         <input type="number" class="form-control" name="bonus" id="inputBonus" formControlName="bonus">
+                        <div *ngIf="ngFormClient.submitted">
+                            <small *ngIf="pfgBonus?.errors?.['min']" class="text-danger">*Bônus não pode ser
+                                negativo</small>
+                            <small *ngIf="pfgBonus?.errors?.['required']" class="text-danger">*Bônus é
+                                requerido</small>
+                        </div>
                     </div>
 
                 </div>
@@ -54,6 +72,11 @@
                                 <label class="form-check-label" for="feminino">
                                     Feminino
                                 </label>
+                            </div>
+
+                            <div *ngIf="ngFormClient.submitted">
+                                <small *ngIf="pfgGender?.errors?.['required']" class="text-danger">*Gênero é
+                                    requerido</small>
                             </div>
 
                         </div>

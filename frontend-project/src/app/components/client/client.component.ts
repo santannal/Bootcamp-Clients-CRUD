@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Client } from '../../interfaces/client';
-import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-client',
@@ -49,5 +49,10 @@ export class ClientComponent {
   }
 
   //TODO métodos para pegar os pfgAtributs
+
+  get pfgName() { return this.formGroupClient.get("name") }
+  get pfgSalary() { return this.formGroupClient.get("salary") }
+  get pfgBonus() { return this.formGroupClient.get("bonus") }
+  get pfgGender() { return this.formGroupClient.get("gender") }
 
 }
