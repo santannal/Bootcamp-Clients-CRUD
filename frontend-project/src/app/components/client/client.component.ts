@@ -30,12 +30,11 @@ export class ClientComponent {
   ngOnChanges(): void {
     if (this.client.id) {
       this.formGroupClient.setValue(this.client);
+      this.formGroupClient.get('gender')?.setValue(this.client.gender.toString());
     }
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   save() {
     if (this.formGroupClient.valid) {
@@ -47,8 +46,6 @@ export class ClientComponent {
   cancel() {
     this.saveEmitter.emit(false);
   }
-
-  //TODO métodos para pegar os pfgAtributs
 
   get pfgName() { return this.formGroupClient.get("name") }
   get pfgSalary() { return this.formGroupClient.get("salary") }

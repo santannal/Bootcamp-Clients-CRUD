@@ -10,8 +10,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ClientsComponent {
 
-  // compaireGender: boolean = false;
-
   client: Client = {} as Client;
   deleteClient: Client = {} as Client;
   clients: Client[] = [];
@@ -31,19 +29,22 @@ export class ClientsComponent {
     this.deleteClient = client;
     this.modalService.open(modal).result.then(
       (confirm) => {
-        this.clientService.delete(client).subscribe({
-          next: () => {
-            this.clients = this.clients.filter(c => c.id !== client.id);
-          }
-        })
-      }
-    )
+        if (confirm) {
+          this.clientService.delete(client).subscribe({
+            next: () => {
+              this.clients = this.clients.filter(c => c.id !== client.id);
+
+            }
+          });
+        }
+      });
   }
 
   edit(client: Client) {
     this.client = client;
     this.showForm = true;
     this.isEditing = true;
+    console.log(this.client);
   }
 
   create() {
