@@ -47,6 +47,8 @@
                         <div *ngIf="ngFormClient.submitted">
                             <small *ngIf="pfgBonus?.errors?.['min']" class="text-danger">*Bônus não pode ser
                                 negativo</small>
+                            <small *ngIf="pfgBonus?.errors?.['max']" class="text-danger">*Bônus não pode ser maior que
+                                100</small>
                             <small *ngIf="pfgBonus?.errors?.['required']" class="text-danger">*Bônus é
                                 requerido</small>
                         </div>
